@@ -36,5 +36,11 @@ public class StringUtilites {
         return  wordsAndCounts;
     }
 
+    public static boolean checkAStringcontainOnlyDigit_Sol1(String input){
+        return  input.matches("[0-9]+");
+    }
 
+    public static boolean checkAStringcontainOnlyDigit_ByJava8(String input) {
+        return  input.chars().allMatch(n -> Character.isDigit(n));
+    }
 }

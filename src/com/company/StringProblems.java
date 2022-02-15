@@ -41,4 +41,16 @@ public class StringProblems {
 
    }
 
+   @TestFactory
+	Collection<DynamicTest> test_CheckAllChractoerAreDigits(){
+    	return Arrays.asList(
+				dynamicTest("first test",
+						()-> assertTrue( StringUtilites.checkAStringcontainOnlyDigit_ByJava8("877565623423409888"))),
+				dynamicTest("2th test",
+						()-> assertTrue( StringUtilites.checkAStringcontainOnlyDigit_ByJava8("877565623423409888"))),
+				dynamicTest("3th test",
+						()-> assertTrue( StringUtilites.checkAStringcontainOnlyDigit_ByJava8("8775656 23423409888")))
+		);
+   }
+
 }
