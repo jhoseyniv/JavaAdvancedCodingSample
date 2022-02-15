@@ -19,7 +19,6 @@ public class StringUtilites {
         for(int i = 0; i<input.length(); i++){
             Character ch = input.charAt(i);
             result[ch.charValue()] ++ ;
-
         }
 
         for(int i = 0; i<result.length; i++){
@@ -36,5 +35,6 @@ public class StringUtilites {
         }
         return  wordsAndCounts;
     }
+
 
 }
