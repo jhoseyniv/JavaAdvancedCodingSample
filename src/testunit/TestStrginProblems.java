@@ -40,8 +40,10 @@ public class TestStrginProblems {
                 dynamicTest("first test",
                         ()-> assertTrue( StringUtilites.checkAStringcontainOnlyDigit_ByJava8("877565623423409888"))),
                 dynamicTest("2th test",
+
                         ()-> assertTrue( StringUtilites.checkAStringcontainOnlyDigit_ByJava8("877565623423409888"))),
                 dynamicTest("3th test",
+
                         ()-> assertTrue( StringUtilites.checkAStringcontainOnlyDigit_ByJava8("8775656 23423409888")))
         );
     }
@@ -66,6 +68,7 @@ public class TestStrginProblems {
         return Arrays.asList(
                 dynamicTest("first test" ,
                         ()->assertEquals(new Long(1),StringUtilites.countOccurrencesOfACertainCharacter("abcaaggiiia",'c'))  ),
+
                 dynamicTest("2th test" ,
                         ()->assertEquals(new Long(4),StringUtilites.countOccurrencesOfACertainCharacter("abcaaggiiia",'a'))  )
         );

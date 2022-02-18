@@ -78,4 +78,7 @@ public class StringUtilites {
         return new Pair<Long, Long>(vowelCount, consonanetCount);
 
     }
+    public static Long countOccurrencesOfACertainCharacter(String str,char ch){
+       return str.chars().filter( c -> c==ch).count();
+    }
 }
