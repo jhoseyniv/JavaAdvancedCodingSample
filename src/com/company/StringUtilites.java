@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import javafx.util.Pair;
 
 public class StringUtilites {
@@ -81,4 +83,15 @@ public class StringUtilites {
     public static Long countOccurrencesOfACertainCharacter(String str,char ch){
        return str.chars().filter( c -> c==ch).count();
     }
-}
+    public static String joinTreeStringWithDelimeter(String param1,String param2,String param3, char delimeter){
+        StringBuilder result = new StringBuilder(param1);
+        result.append(delimeter).append(param2).append(delimeter).append(param3);
+        return result.toString();
+    }
+
+    public static String joinMultipleStringWithDelimeterByJava8(String[] args, char delimeter) {
+        return Arrays.stream(args, 0, args.length)
+                .collect(Collectors.joining(String.valueOf(delimeter)));
+    }
+
+    }

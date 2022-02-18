@@ -73,4 +73,11 @@ public class TestStrginProblems {
                         ()->assertEquals(new Long(4),StringUtilites.countOccurrencesOfACertainCharacter("abcaaggiiia",'a'))  )
         );
     }
+    @TestFactory
+    Collection<DynamicTest> test_DelimiterBetweenStrings(){
+        return  Arrays.asList(
+                dynamicTest("first test",
+                        ()->assertEquals("abc-def-mnp",StringUtilites.joinTreeStringWithDelimeter("abc","def","mnp",'-')))
+        );
+    }
 }
