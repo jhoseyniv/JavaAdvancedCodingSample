@@ -61,4 +61,13 @@ public class TestStrginProblems {
                         ()-> assertEquals("0=0",StringUtilites.countVowelsAndConsonants("").toString()))
                 );
     }
+    @TestFactory
+    Collection<DynamicTest> test_CheckCountSpecialCharacter(){
+        return Arrays.asList(
+                dynamicTest("first test" ,
+                        ()->assertEquals(new Long(1),StringUtilites.countOccurrencesOfACertainCharacter("abcaaggiiia",'c'))  ),
+                dynamicTest("2th test" ,
+                        ()->assertEquals(new Long(4),StringUtilites.countOccurrencesOfACertainCharacter("abcaaggiiia",'a'))  )
+        );
+    }
 }
