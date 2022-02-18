@@ -16,41 +16,9 @@ public class StringProblems {
 		String input = " ali reza ali reza ali ali ali kk l kk lol lol saeed reza";
 	    Map<String,Integer> result = StringUtilites.getDuplicateWordsWithCounts(input);
 	    result.entrySet().forEach(System.out::println);
-
+		StringUtilites.countVowelsAndConsonants(input);
     }
 
-   @TestFactory
-	Collection<DynamicTest> test_GetFirstNonRepeatCharacter(){
-		return Arrays.asList(
-				dynamicTest("first test ",
-						()->assertEquals( new Character('d'),
-								StringUtilites.getFirstNonRepeatCharacter("salamQsaeeQdjanaliiehow"))),
 
-				dynamicTest("2th test ",
-						()->assertEquals( new Character('Q'),
-								StringUtilites.getFirstNonRepeatCharacter("salamQsaeedjanaliiehow"))),
-
-				dynamicTest("3th test ",
-						()->assertEquals( null,
-								StringUtilites.getFirstNonRepeatCharacter(""))),
-
-				dynamicTest("4th test ",
-						()->assertEquals( new Character(' '),
-								StringUtilites.getFirstNonRepeatCharacter(" sdfkjhksjdfkjfdsfhjgweiurdsfjfhjdsf")))
-		);
-
-   }
-
-   @TestFactory
-	Collection<DynamicTest> test_CheckAllChractoerAreDigits(){
-    	return Arrays.asList(
-				dynamicTest("first test",
-						()-> assertTrue( StringUtilites.checkAStringcontainOnlyDigit_ByJava8("877565623423409888"))),
-				dynamicTest("2th test",
-						()-> assertTrue( StringUtilites.checkAStringcontainOnlyDigit_ByJava8("877565623423409888"))),
-				dynamicTest("3th test",
-						()-> assertTrue( StringUtilites.checkAStringcontainOnlyDigit_ByJava8("8775656 23423409888")))
-		);
-   }
 
 }

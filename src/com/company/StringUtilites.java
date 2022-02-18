@@ -1,8 +1,10 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.util.Pair;
 
 public class StringUtilites {
 
@@ -37,10 +39,43 @@ public class StringUtilites {
     }
 
     public static boolean checkAStringcontainOnlyDigit_Sol1(String input){
+
         return  input.matches("[0-9]+");
     }
 
     public static boolean checkAStringcontainOnlyDigit_ByJava8(String input) {
         return  input.chars().allMatch(n -> Character.isDigit(n));
+    }
+    public static Pair<Integer, Integer> countVowelsAndConsonants(String str) {
+        ArrayList<Character> vowelCharachters= new ArrayList<>(Arrays.asList('a','e','i','o','u'));
+        char firstChar = 'a';
+        char encChar = 'z';
+        int vowelCount = 0;
+        int consonanetCount = 0;
+        String strLoweCase = str.toLowerCase();
+
+        for(int i=0; i < strLoweCase.length(); i++){
+            char character = strLoweCase.charAt(i);
+            if(vowelCharachters.contains(character)) {
+                vowelCount++;
+            }
+            else if( character > firstChar  && character < encChar ){
+                consonanetCount++;
+            }
+        }
+       return new Pair<Integer, Integer>(vowelCount, consonanetCount);
+    }
+    public static Pair<Long, Long> countVowelsAndConsonantsByJava8(String str) {
+        ArrayList<Character> vowelCharachters= new ArrayList<>(Arrays.asList('a','e','i','o','u'));
+        long vowelCount = 0;
+        long consonanetCount = 0;
+        String strLoweCase = str.toLowerCase();
+
+        vowelCount = strLoweCase.chars().filter(c -> vowelCharachters.contains((char)c)).count();
+        consonanetCount = strLoweCase.chars().filter( c -> !vowelCharachters.contains((char) c)).
+                            filter(ch -> (ch >'a' && ch <'z' )).count();
+
+        return new Pair<Long, Long>(vowelCount, consonanetCount);
+
     }
 }
