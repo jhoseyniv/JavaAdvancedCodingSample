@@ -1,7 +1,5 @@
 package com.designpattern.Creational.Single;
 
-import javasamples.designpattern.Creational.ClassicSingleton;
-
 public class TestSingletone {
 
     public static void main(String args[]){

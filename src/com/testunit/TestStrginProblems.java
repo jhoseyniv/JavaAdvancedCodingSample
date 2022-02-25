@@ -1,6 +1,5 @@
 package com.testunit;
 
-import com.stringproblems.StringUtilites;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
@@ -10,7 +9,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
-
+import com.stringproblems.*;
 public class TestStrginProblems {
     @TestFactory
     Collection<DynamicTest> test_GetFirstNonRepeatCharacter(){
