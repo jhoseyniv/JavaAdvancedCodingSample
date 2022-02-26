@@ -1,4 +1,4 @@
-package com.designpattern.Creational;
+package com.designpattern.Creational.Single;
 
 public class ClassicSingleton {
 	 private ClassicSingleton() {};
