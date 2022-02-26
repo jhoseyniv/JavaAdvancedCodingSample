@@ -1,6 +1,6 @@
 package com.designpattern.Creational.Single;
 
-import javasamples.designpattern.Creational.ClassicSingleton;
+import com.designpattern.Creational.ClassicSingleton;
 
 public class TestSingletone {
 
