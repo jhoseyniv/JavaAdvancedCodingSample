@@ -1,4 +1,4 @@
-package com.ImmutablityAndNullObjects;
+package com.objectimmutablity;
 
 import java.awt.*;
 import java.util.Objects;

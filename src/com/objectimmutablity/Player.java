@@ -1,4 +1,4 @@
-package com.ImmutablityAndNullObjects;
+package com.objectimmutablity;
 
 public class Player implements Cloneable {
     private int id;

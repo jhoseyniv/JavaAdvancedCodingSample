@@ -1,4 +1,4 @@
-package com.ImmutablityAndNullObjects;
+package com.objectimmutablity;
 
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
