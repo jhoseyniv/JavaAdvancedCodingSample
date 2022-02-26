@@ -1,6 +1,6 @@
 package com.sort;
 
-public class Melon {
+public class Melon implements Comparable{
     private final String type;
     private final int weight;
 
@@ -15,5 +15,11 @@ public class Melon {
 
     public int getWeight() {
         return weight;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Melon m = (Melon) o;
+        return Integer.compare(this.getWeight(), m.getWeight());
     }
 }
