@@ -16,7 +16,8 @@ public class MySubject {
         notifyAllObservers();
     }
 
-    public void attach(MyObserver observer){
+    public void register(MyObserver observer){
+
         observers.add(observer);
     }
 

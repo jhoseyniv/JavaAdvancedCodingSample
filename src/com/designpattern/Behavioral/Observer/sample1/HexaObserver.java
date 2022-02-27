@@ -4,7 +4,7 @@ public class HexaObserver extends MyObserver{
 
     public HexaObserver(MySubject subject){
         this.subject = subject;
-        this.subject.attach(this);
+        this.subject.register(this);
     }
 
     @Override
@@ -13,7 +13,7 @@ public class HexaObserver extends MyObserver{
     }
 
     @Override
-    public void add(MyObserver myObserver) {
+    public void register(MyObserver myObserver) {
 
     }
 }

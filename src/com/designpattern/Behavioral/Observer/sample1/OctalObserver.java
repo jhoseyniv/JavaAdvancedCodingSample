@@ -3,7 +3,7 @@ package com.designpattern.Behavioral.Observer.sample1;
 public class OctalObserver extends MyObserver {
     public OctalObserver(MySubject subject){
         this.subject = subject;
-        this.subject.attach(this);
+        this.subject.register(this);
     }
 
     @Override
@@ -12,7 +12,7 @@ public class OctalObserver extends MyObserver {
     }
 
     @Override
-    public void add(MyObserver myObserver) {
+    public void register(MyObserver myObserver) {
 
     }
 }
