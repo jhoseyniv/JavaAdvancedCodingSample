@@ -14,10 +14,8 @@ public class ConvertUtil {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDate localDateFormatted    = LocalDate.parse("01.06.2020", dateFormatter);
 
-        DateTimeFormatter offsetTimeFormatter
-                = DateTimeFormatter.ofPattern("HH mm ss XXXXX");
-        OffsetTime offsetTimeFormatted
-                = OffsetTime.parse("10 15 30 +01:00", offsetTimeFormatter);
+        DateTimeFormatter offsetTimeFormatter = DateTimeFormatter.ofPattern("HH mm ss XXXXX");
+        OffsetTime offsetTimeFormatted  = OffsetTime.parse("10 15 30 +01:00", offsetTimeFormatter);
 
     }
 }
