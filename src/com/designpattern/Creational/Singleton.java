@@ -1,6 +1,6 @@
 package com.designpattern.Creational;
 
-public class Singleton {
+public final class Singleton {
 	  // Private constructor prevents instantiation from other classes
 	  private Singleton() {}
 	  private static final Singleton INSTANCE = new Singleton();
