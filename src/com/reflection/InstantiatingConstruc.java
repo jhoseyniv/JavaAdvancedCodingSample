@@ -5,6 +5,7 @@ import com.designpattern.Creational.Singleton;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 
 public class InstantiatingConstruc {
 
@@ -26,5 +27,26 @@ public class InstantiatingConstruc {
        // Constructor<Singleton> singletonConstructor = singletonClass.getConstructor();
       //  Singleton singleton =  singletonConstructor.newInstance();
         System.out.println("new instance from singltone class from private constuctor by reflection---->" + singletonClass);
+
+        //list of constructors
+        Class<MyCar> clazzMyCar = MyCar.class;
+        Constructor<?>[] cnstrs = clazz.getConstructors();
+        System.out.println("My Car class has " + cnstrs.length + " constructors");
+        Arrays.stream(cnstrs).forEach(System.out::println);
+
+        //number of each constructor parameter
+        for (Constructor<?> cnstr : cnstrs) {
+            int paramCount = cnstr.getParameterCount();
+            System.out.println("\nConstructor with " + paramCount + " parameters");
+        }
+
+        //type  of each parameter
+        for (Constructor<?> cnstr : cnstrs) {
+            Class<?>[] typesOfParams = cnstr.getParameterTypes();
+
+        }
+
+
+
     }
 }
