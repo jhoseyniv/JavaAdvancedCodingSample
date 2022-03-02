@@ -6,6 +6,8 @@ import java.awt.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public final class Pair<L, R> extends Car implements Comparable {
@@ -27,6 +29,9 @@ public final class Pair<L, R> extends Car implements Comparable {
 
     public static void main(String args[]) throws ClassNotFoundException {
         Pair pair = new Pair(1, 1);
+
+
+
         //get name of pair
         Class<?> clazz = pair.getClass();
         System.out.println("Name: " + clazz.getName());
@@ -54,8 +59,17 @@ public final class Pair<L, R> extends Car implements Comparable {
         Field[]  fields =clazz3.getDeclaredFields();
         Arrays.stream(fields).forEach(System.out::println);
 
+
         //get parent
         System.out.println("parent  name:------------> " + clazz3.getSuperclass());
+
+
+        // get final or immutable calss
+        System.out.println("super class Type  name:------------> " + clazz3.getGenericSuperclass());
+
+        // Generics of interfaces
+        Type[] interfacesTypes = clazz.getGenericInterfaces();
+
 
         //get Methods
         System.out.println("get Method Names:--------------> " );

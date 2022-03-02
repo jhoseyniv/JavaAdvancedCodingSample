@@ -1,17 +1,39 @@
 package com.reflection;
 
+import java.util.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class GenerateGetterSetter {
     public static void main(String args[]){
-
         Class<?> clazz = Person.class;
+
+        List<Field> publicFields  = new ArrayList<Field>();
+        List<Field> privateFields = new ArrayList<Field>();
+
+        Field[]  fields =clazz.getDeclaredFields();
+
+        for (Field field: fields) {
+            if (Modifier.isPublic(field.getModifiers())) {
+                publicFields.add(field);
+            }
+            if (Modifier.isPrivate(field.getModifiers())) {
+                privateFields.add(field);
+            }
+        }
+
+        System.out.println("Print Public Fields  for Class :  " + clazz.getSimpleName());
+        publicFields.stream().forEach(System.out::println);
+
+        System.out.println("Print Private Fields  for Class :  " + clazz.getSimpleName());
+        privateFields.stream().forEach(System.out::println);
+
         StringBuilder getters = generateGetters(clazz);
         StringBuilder setters = generateSetters(clazz);
 
@@ -20,6 +42,9 @@ public class GenerateGetterSetter {
 
         System.out.println("setters for class  " + clazz.getSimpleName());
         System.out.println(setters);
+
+
+
 
     }
 
