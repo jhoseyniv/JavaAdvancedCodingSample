@@ -144,7 +144,7 @@ public class ConvertUtil {
 
         List<String> timezones
                 = ConvertUtil.fetchTimeZones("OffsetType");
-        Collections.sort(timezones); // optional sort
+        Collections.sort(timezones); // com.optional sort
         timezones.forEach(System.out::println);
     }
 
