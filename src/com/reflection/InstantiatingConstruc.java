@@ -3,8 +3,7 @@ package com.reflection;
 import com.designpattern.Creational.Singleton;
 
 import java.awt.*;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.*;
 import java.util.Arrays;
 
 public class InstantiatingConstruc {
@@ -49,4 +48,6 @@ public class InstantiatingConstruc {
 
 
     }
+
+
 }
