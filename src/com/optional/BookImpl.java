@@ -2,6 +2,8 @@ package com.optional;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.Collections;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -38,6 +40,24 @@ public class BookImpl {
         Optional<String> status = Optional.of("test"); // this is prone to be empty
         return status.orElseThrow();
     }
+
+    //    Do not use Optional to return empty or null collections or arrays
+    // Avoid
+    public Optional<List<Book>> fetchBooksByYear(int year) {
+// fetching the books may return null
+        List<Book> books = null;
+        return Optional.ofNullable(books);
+    }
+  //  Optional<List<Book>> books = author.fetchBooksByYear(2021);
+
+    // Prefer
+    public List<Book> fetchBooksByYear2(int year) {
+    // fetching the books may return null
+        List<Book> books = null;
+        return books == null ? Collections.emptyList() : books;
+    }
+   // List<Book> books = author.fetchBooksByYear2(2021);
+
 
     public static void main(String args[]){
 
