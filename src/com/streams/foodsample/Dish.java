@@ -27,6 +27,6 @@ public class Dish {
         public String toString() {
             return name;
         }
-        public enum Type { MEAT, FISH, OTHER }
+        public enum Type { MEAT,CARBO ,FISH,DAIRY, OTHER }
    }
 
