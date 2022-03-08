@@ -2,6 +2,7 @@ package com.streams.foodsample;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class StreamFilteringSample {
     public static void main(String args[]){
@@ -26,6 +27,20 @@ public class StreamFilteringSample {
         System.out.println("\nAll numbers that less than 4 ...............By TakeWhile method");
         numbers.stream().takeWhile(num -> num < 4).forEach(num -> System.out.print(num + " , "));
 
+        System.out.println("\nAll numbers dividable by 2  ...............By Filter");
+
+        Stream.of(1,2,3,4,5,6,7,8,9,10).filter(i -> i % 2 == 0 )
+                .forEach(System.out::println);
+
+        System.out.println("\nAll numbers dividable by 2  ...............By TakeWhile");
+        Stream.of(1,2,3,4,5,6,7,8,9,10).takeWhile(i -> i % 2 == 0 )
+                .forEach(System.out::println);
+
+        //The dropWhile method does the opposite of the takeWhile. If it finds the first element that does not match its predicate,
+        // it discards all items that came before that unmatching element.
+
+        System.out.println("\n find first numbers dividable by 2  and left other items ...............By DropWhile");
+        numbers.stream().dropWhile(num -> num % 2 != 0).forEach(num -> System.out.print(num + " , "));
 
     }
 
