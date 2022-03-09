@@ -129,5 +129,19 @@ public class StreamFilteringSample {
         Optional<Dish> dish2 = specialMenu.stream().filter(Dish::isVegetarian).findAny();
 
         specialMenu.stream().filter(dish -> dish.getCalories()>300).findAny().ifPresent(d -> System.out.println(d.getName()));
+
+        System.out.println("The Number suqare is divideable by 3!!");
+
+        List<Integer> someNumber = Arrays.asList(13,2,3,5,6,7,8,4,9,11,12);
+        someNumber.stream().filter(n -> n*n % 3 == 0).findFirst().ifPresent(System.out::println);
+        int sum = someNumber.stream().reduce(0,(a,b)-> a+b);
+        System.out.println("Summ of Numbers is "+ sum);
+
+        int multiply = someNumber.stream().reduce(0,Integer::sum);
+
+        System.out.println("Summ of Numbers is "+ sum);
+        someNumber.stream().reduce(Integer::max).ifPresent(m -> System.out.println(m));
+
+
     }
 }
