@@ -2,6 +2,8 @@ package com.streams.foodsample;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamFilteringSample {
@@ -52,6 +54,20 @@ public class StreamFilteringSample {
         specialMenu.stream().filter(dish -> dish.getType().equals(Dish.Type.MEAT) ).limit(2).
                 forEach(dish -> System.out.println(dish.getName()));
 
+        System.out.println("\n map dishes  calories..By .....");
+        List<Integer> calories = specialMenu.stream().map(Dish::getCalories).sorted().toList();
+        calories.stream().forEach(System.out::println);
+
+        System.out.println("\n map dishes  name length..By .....");
+        List<Integer> dishesNameLenght = specialMenu.stream().map(Dish::getName).map(String::length).toList();
+        dishesNameLenght.stream().forEach(System.out::println);
+
+
+        System.out.println("\n Flat map dishes By  name and Type..By .....");
+         List<String> dishesNames =  specialMenu.stream().flatMap(dish-> Stream.of(dish.getName(),dish.getType().toString())).toList();
+        List<String> dishesNameLenghtA = specialMenu.stream().map(dish -> String.format("%s: %s :%s",dish.getName(), dish.getName().length(),dish.getType() )).toList();
+
+        dishesNameLenghtA.stream().forEach(System.out::println);
     }
 
 }
