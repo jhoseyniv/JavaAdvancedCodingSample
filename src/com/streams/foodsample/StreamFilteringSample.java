@@ -107,6 +107,24 @@ public class StreamFilteringSample {
         //In a nutshell, the flatMap method lets you replace each value of a stream with
         //another stream and then concatenates all the generated streams into a single stream
 
+        if(specialMenu.stream().anyMatch(Dish::isVegetarian)) {
+            System.out.println("The menu is (somewhat) vegetarian friendly!!");
+        }
+        if(specialMenu.stream().allMatch(dish ->  dish.getCalories() <800 )){
+            System.out.println("The menu is (Fully) Helthy Menu!!");
+
+        }
+        if(specialMenu.stream().noneMatch(dish -> dish.getType().equals("MeditrainFOOD"))) {
+            System.out.println("The menu is Not Meditrain Menu!!");
+
+        }
+        if(specialMenu.stream().noneMatch(dish -> dish.getType().equals(Dish.Type.FISH))) {
+            System.out.println("The menu is NOT A See Food Menu!!");
+
+        }else{
+            System.out.println("The menu is  A See Food Menu!!");
+
+        }
 
     }
 }
