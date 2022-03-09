@@ -86,7 +86,24 @@ public class StreamFilteringSample {
         }
 
         System.out.println(" \n return a list of the square of each number..By .....");
-         numbers.stream().map(num -> num*num).forEach( num -> System.out.print(num + " , "));
+        numbers.stream().map(num -> num*num).forEach( num -> System.out.print(num + " , "));
+
+
+        System.out.println(" \n Given two lists of numbers, how would you return all pairs of numbers..By .....");
+        List<Integer> numbers1 = Arrays.asList(2,5,7,1,3);
+        List<Integer> numbers2=  Arrays.asList(13,2,4);
+        List<int[]> pairNumbers = numbers1.stream().flatMap(num1 -> numbers2.stream().map(num2-> new int[]{num1,num2})).toList();
+        pairNumbers.stream().forEach(pair -> System.out.println(pair[0]+" , "+pair[1]));
+
+
+        //How would you extend the previous example to return only pairs whose sum is divisible by 3
+        System.out.println(" \n pair numbers,whose sum is divisible by 3 ..By .....");
+
+        List<int[]> pairNumbers2 = numbers1.stream().flatMap(num1 -> numbers2.stream().map(num2-> new int[]{num1,num2})).toList();
+        pairNumbers2.stream().filter(pair -> (pair[0] + pair[1]) % 3 == 0 ).
+                forEach(pair -> System.out.println(pair[0]+" , "+pair[1]));
+
+
         //In a nutshell, the flatMap method lets you replace each value of a stream with
         //another stream and then concatenates all the generated streams into a single stream
 
