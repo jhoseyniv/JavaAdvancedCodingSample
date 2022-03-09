@@ -15,9 +15,11 @@ public class StreamFilteringSample {
         //Java 9 added two new methods that are useful for efficiently selecting elements in a stream: takeWhile and dropWhile
         List<Dish> specialMenu = Arrays.asList(
                 new Dish("seasonal fruit", true, 120, Dish.Type.OTHER),
+                new Dish("beef", false, 600, Dish.Type.MEAT),
                 new Dish("prawns", false, 300, Dish.Type.FISH),
                 new Dish("rice", true, 350, Dish.Type.OTHER),
                 new Dish("chicken", false, 400, Dish.Type.MEAT),
+                new Dish("kebab", false, 600, Dish.Type.MEAT),
                 new Dish("french fries", true, 530, Dish.Type.OTHER));
 
         //takeWhile = Takes values while the filter is true, then stops
@@ -41,6 +43,14 @@ public class StreamFilteringSample {
 
         System.out.println("\n find first numbers dividable by 2  and left other items ...............By DropWhile");
         numbers.stream().dropWhile(num -> num % 2 != 0).forEach(num -> System.out.print(num + " , "));
+
+        System.out.println("\n Test Skip ...............By .....");
+        List<Dish> dishes = specialMenu.stream().filter(dish -> dish.getCalories() >= 300).skip(3).toList();
+        dishes.stream().forEach(System.out::println);
+
+        System.out.println("\n filter the first two meat dishes ..By .....");
+        specialMenu.stream().filter(dish -> dish.getType().equals(Dish.Type.MEAT) ).limit(2).
+                forEach(dish -> System.out.println(dish.getName()));
 
     }
 
