@@ -3,6 +3,7 @@ package com.streams.foodsample;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -125,6 +126,8 @@ public class StreamFilteringSample {
             System.out.println("The menu is  A See Food Menu!!");
 
         }
+        Optional<Dish> dish2 = specialMenu.stream().filter(Dish::isVegetarian).findAny();
 
+        specialMenu.stream().filter(dish -> dish.getCalories()>300).findAny().ifPresent(d -> System.out.println(d.getName()));
     }
 }
