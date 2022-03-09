@@ -68,6 +68,28 @@ public class StreamFilteringSample {
         List<String> dishesNameLenghtA = specialMenu.stream().map(dish -> String.format("%s: %s :%s",dish.getName(), dish.getName().length(),dish.getType() )).toList();
 
         dishesNameLenghtA.stream().forEach(System.out::println);
-    }
 
+        System.out.println("\n map words  name length..By .....");
+        List<String> words = Arrays.asList("Modern", "Java", "In", "Action");
+        List<Integer> wordLengths = words.stream()
+                .map(String::length)
+                .toList();
+
+        List<String> uniqueCharacters =
+                words.stream()
+                        .map(word -> word.split(""))
+                        .flatMap(Arrays::stream)
+                        .distinct()
+                        .toList();
+        for(String s:uniqueCharacters) {
+            System.out.println(s);
+        }
+
+        System.out.println(" \n return a list of the square of each number..By .....");
+         numbers.stream().map(num -> num*num).forEach( num -> System.out.print(num + " , "));
+        //In a nutshell, the flatMap method lets you replace each value of a stream with
+        //another stream and then concatenates all the generated streams into a single stream
+
+
+    }
 }
