@@ -1,10 +1,9 @@
 package com.streams.foodsample;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
+import javax.print.Doc;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamFilteringSample {
@@ -137,11 +136,31 @@ public class StreamFilteringSample {
         int sum = someNumber.stream().reduce(0,(a,b)-> a+b);
         System.out.println("Summ of Numbers is "+ sum);
 
-        int multiply = someNumber.stream().reduce(0,Integer::sum);
+        //int multiply = someNumber.stream().reduce(0,Integer::sum);
 
         System.out.println("Summ of Numbers is "+ sum);
         someNumber.stream().reduce(Integer::max).ifPresent(m -> System.out.println(m));
 
+
+        System.out.println("Sum of the calories of all foods in the menu is "+ sum);
+        int sumCalories = specialMenu.stream().map(Dish::getCalories).reduce(0,Integer::sum);
+        System.out.println("All Calories is : " + sumCalories);
+
+        System.out.println("Sum of the calories of all foods in the menu BY Map To Int Method ");
+        int sumCalories2 = specialMenu.stream().mapToInt(Dish::getCalories).sum();
+        OptionalDouble averageCalories = specialMenu.stream().mapToInt(Dish::getCalories).average();
+
+        System.out.println("All Calories is : " + sumCalories2);
+
+        //CONVERTING BACK TO A STREAM OF OBJECTS with Boxed Method
+        IntStream intStream = specialMenu.stream().mapToInt(Dish::getCalories);
+        Stream<Integer> stream = intStream.boxed();
+
+        OptionalInt maxCalories = specialMenu.stream()
+                .mapToInt(Dish::getCalories)
+                .max();
+        //You can now process the OptionalInt explicitly to define a default value if there’s no maximum:
+        int max = maxCalories.orElse(1);
 
     }
 }
