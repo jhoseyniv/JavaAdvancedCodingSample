@@ -1,0 +1,16 @@
+this
+is
+a
+test
+file
+for
+read
+all
+lines
+of
+a
+file
+with
+stream
+in java
+9
