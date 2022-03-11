@@ -26,8 +26,8 @@ public class FindPrimeNumber {
         return Arrays.asList(
                 dynamicTest("test 2 is prime ",() -> assertEquals(true, isPrime(2)) ),
                 dynamicTest("test 5 is prime ",() -> assertEquals(true, isPrime(5)) ),
-                dynamicTest("test 5 is prime ",() -> assertEquals(true, isPrime(13)) ),
-                dynamicTest("test 5 is prime ",() -> assertEquals(true, isPrime(12)) )
+                dynamicTest("test 13 is prime ",() -> assertEquals(true, isPrime(13)) ),
+                dynamicTest("test 12 is prime ",() -> assertEquals(true, isPrime(12)) )
         );
     }
 }
