@@ -28,5 +28,6 @@ public class Dish {
             return name;
         }
         public enum Type { MEAT,CARBO ,FISH,DAIRY, OTHER }
+        public enum CaloricLevel{DIET,NORMAL,FAT}
    }
 

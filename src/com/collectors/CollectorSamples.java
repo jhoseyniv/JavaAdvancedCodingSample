@@ -3,11 +3,9 @@ package com.collectors;
 import com.streams.trader.Currency;
 import com.streams.trader.Trader;
 import com.streams.trader.Transaction;
+import static java.util.stream.Collectors.*;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CollectorSamples {
@@ -32,5 +30,23 @@ public class CollectorSamples {
         transactionGroupByCurrency = transactions.stream().collect(Collectors.groupingBy(Transaction::getCurrency,Collectors.toList()));
         transactionGroupByCurrency.entrySet().forEach(System.out::println);
 
+        long howManyTransations = transactions.stream().collect(counting());
+        System.out.println("Number Of transactions is :  " + howManyTransations);
+
+        //Finding maximum and minimum in a stream of values
+        Comparator<Transaction> transactionComparator = Comparator.comparingInt(Transaction::getValue);
+        Optional<Transaction> mostCalorieDish = transactions.stream().collect(maxBy(transactionComparator));
+
+        int totalvalues = transactions.stream().collect(summingInt(Transaction::getValue));
+
+        double avrageValue = transactions.stream().collect(averagingInt(Transaction::getValue));
+
+        //you can use the collector returned by the summarizingInt factory method.
+        //For example, you can count the elements in the menu and obtain the sum, average, maximum, and minimum of the calories contained in each dish with a single
+        //summarizing operation:
+
+        IntSummaryStatistics intSummaryStatistics = transactions.stream().collect(summarizingInt(Transaction::getValue));
+        System.out.println("Summerize information about value of Transactions....");
+        System.out.println(intSummaryStatistics);
     }
 }

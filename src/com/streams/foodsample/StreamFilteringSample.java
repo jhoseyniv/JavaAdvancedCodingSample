@@ -3,6 +3,7 @@ package com.streams.foodsample;
 import javax.print.Doc;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Collectors.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -23,6 +24,19 @@ public class StreamFilteringSample {
                 new Dish("chicken", false, 400, Dish.Type.MEAT),
                 new Dish("kebab", false, 600, Dish.Type.MEAT),
                 new Dish("french fries", true, 530, Dish.Type.OTHER));
+
+        Map<String, List<String>> dishTags = new HashMap<>();
+        dishTags.put("pork", Arrays.asList("greasy", "salty"));
+        dishTags.put("beef", Arrays.asList("salty", "roasted"));
+        dishTags.put("chicken", Arrays.asList("fried", "crisp"));
+        dishTags.put("french fries", Arrays.asList("greasy", "fried"));
+        dishTags.put("rice", Arrays.asList("light", "natural"));
+        dishTags.put("season fruit", Arrays.asList("fresh", "natural"));
+        dishTags.put("pizza", Arrays.asList("tasty", "salty"));
+        dishTags.put("prawns", Arrays.asList("tasty", "roasted"));
+        dishTags.put("salmon", Arrays.asList("delicious", "fresh"));
+
+
 
         //takeWhile = Takes values while the filter is true, then stops
         System.out.println("All numbers that less than 4 ...............By Filter");
@@ -161,6 +175,55 @@ public class StreamFilteringSample {
                 .max();
         //You can now process the OptionalInt explicitly to define a default value if there’s no maximum:
         int max = maxCalories.orElse(1);
+
+       // String shortMenu = specialMenu.stream().map(Dish::getName).collect(joining());
+        String shortMenu = specialMenu.stream().map(Dish::getName).collect(Collectors.joining(", "));
+        System.out.println("All dish Names is : " + shortMenu);
+
+        int totalCalories = specialMenu.stream().collect(Collectors.reducing(0, Dish::getCalories, (i, j) -> i + j));
+
+        Optional<Dish> mostCalorieDish =
+                specialMenu.stream().collect(Collectors.reducing((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2));
+
+
+
+        //grouping dishes by type
+        Map<Dish.Type, List<Dish>> disehsByType = specialMenu.stream().collect(Collectors.groupingBy(Dish::getType));
+
+//        Map<Dish.Type, Set<String>> dishNamesByType =
+//                specialMenu.stream()
+//                        .collect(Collectors.groupingBy(Dish::getType,
+//                                Collectors.flatMapping(dish -> dishTags.get( dish.getName() ).stream(),Collectors.toSet())));
+//
+//        System.out.println(dishNamesByType);
+
+        Map<Dish.Type, Map<Dish.CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel =
+        specialMenu.stream().collect(Collectors.groupingBy(Dish::getType,Collectors.groupingBy(dish -> {
+                    if(dish.getCalories() <= 300 ) return Dish.CaloricLevel.DIET;
+                    else if(dish.getCalories() < 700 ) return Dish.CaloricLevel.NORMAL;
+                    else  return  Dish.CaloricLevel.FAT;
+                })
+        )
+        );
+        dishesByTypeCaloricLevel.entrySet().forEach(System.out::println);
+
+        Map<Dish.Type,Long> dishTypeCount = specialMenu.stream().collect(Collectors.groupingBy(Dish::getType,Collectors.counting()));
+        dishTypeCount.entrySet().forEach(System.out::println);
+
+        //the highest-calorie dish in the menu to achieve a similar result, but now classified by
+        //the type of dish:
+        Map<Dish.Type,Optional<Dish>> maxCalorieByTypeDish = specialMenu.stream().collect(Collectors.groupingBy(Dish::getType,Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)) ));
+        maxCalorieByTypeDish.entrySet().forEach(System.out::println);
+
+        Map<Boolean,List<Dish>> partitionedMenu = specialMenu.stream().collect(Collectors.groupingBy(Dish::isVegetarian));
+        partitionedMenu.entrySet().forEach(System.out::println);
+        //you could retrieve all the vegetarian dishes by getting from this Map the value
+        //indexed with the key true
+        List<Dish> vegetarianDishes = partitionedMenu.get(true);
+
+        Map<Boolean,Map<Dish.Type, List<Dish>>> vegetarianDishesByType = specialMenu.stream().
+                collect(Collectors.partitioningBy( Dish::isVegetarian,Collectors.groupingBy(Dish::getType) ));
+        vegetarianDishesByType.entrySet().forEach(System.out::println);
 
     }
 }
