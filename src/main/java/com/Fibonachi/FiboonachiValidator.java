@@ -1,5 +1,12 @@
 package com.Fibonachi;
 
+import org.junit.jupiter.api.DynamicTest;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.TestFactory;
+import java.util.Arrays;
+import java.util.Collection;
+
 public class FiboonachiValidator {
 
    public static long[] getFiboSeri(int n){
@@ -50,7 +57,18 @@ public class FiboonachiValidator {
         }
         return result;
     }
+    @TestFactory
+    Collection<DynamicTest> testFiboNumbersByEquation(){
+        return Arrays.asList(
+                dynamicTest("first test",()->assertEquals(true,checkIsANumberFiboByEquation(2)) ),
+                dynamicTest("two test",()->assertEquals(true,checkIsANumberFiboByEquation(5)) ),
+                dynamicTest("three test",()->assertEquals(true,checkIsANumberFiboByEquation(13)) ),
+                dynamicTest("four test",()->assertEquals(true,checkIsANumberFiboByEquation(22)) )
+
+        );
+    }
     public static void main(String args[]){
+
 
     }
 }
