@@ -48,5 +48,23 @@ public class CollectorSamples {
         IntSummaryStatistics intSummaryStatistics = transactions.stream().collect(summarizingInt(Transaction::getValue));
         System.out.println("Summerize information about value of Transactions....");
         System.out.println(intSummaryStatistics);
+
+
+        for (Transaction transaction : transactions) {
+            if(transaction.getTrader().getName().equalsIgnoreCase("Alan")) {
+               // transactions.remove(transaction); //exception in thread "main" java.lang.UnsupportedOperationException
+            }
+        }
+
+        for (Iterator<Transaction> iterator = transactions.iterator();
+             iterator.hasNext(); ) {
+            Transaction transaction = iterator.next();
+            if(transaction.getTrader().getName().equalsIgnoreCase("Alan")) {
+                //iterator.remove(); //  //exception in thread "main" java.lang.UnsupportedOperationException becuase transations list is immutable
+            }
+        }
+        transactions.removeIf(transaction ->
+                transaction.getTrader().getName().equalsIgnoreCase("Alan"));
     }
+
 }
