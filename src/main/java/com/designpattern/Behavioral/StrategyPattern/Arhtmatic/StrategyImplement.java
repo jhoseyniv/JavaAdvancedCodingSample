@@ -1,4 +1,4 @@
-package com.designpattern.Behavioral.StrategyPattern;
+package com.designpattern.Behavioral.StrategyPattern.Arhtmatic;
 
 import java.math.BigInteger;
 
