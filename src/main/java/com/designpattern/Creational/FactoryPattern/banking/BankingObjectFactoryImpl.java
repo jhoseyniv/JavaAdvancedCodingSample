@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class BankingObjectFactoryImpl {
-    final static Map<String, Supplier<BankingObject>> map = new HashMap<>();
+    public static final Map<String,Supplier<BankingObject>> map = new HashMap<>();
     static {
-        map.put("loan", Loan::new);
-        map.put("stock", Stock::new);
-        map.put("bond", Bond::new);
+        map.put("loan",Loan::new);
+        map.put("stock",Stock::new);
+        map.put("bond",Bond::new);
     }
 
     public static void main(String args[]){
@@ -21,6 +21,7 @@ public class BankingObjectFactoryImpl {
 
 
         BankingObject loan3 = BankingObjectFactory.createBankObjectWithMap(map,"loan");
+        BankingObject bond = BankingObjectFactory.createBankObjectWithMap(map,"bond");
 
 
     }
